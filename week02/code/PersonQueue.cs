@@ -30,6 +30,6 @@ public class PersonQueue
 
     public override string ToString()
     {
-        return $"[{string.Join(", ", _queue)}]";
+        return $"[{string.Join(", ", _queue.Select(p => p.Name))}]";  // Show names of people in the queue.
     }
 }
