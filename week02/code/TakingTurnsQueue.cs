@@ -22,7 +22,7 @@ public class TakingTurnsQueue
     {
         if (turns < 0) 
         {
-            throw new ArgumentException("Turn count cannot be negative.");
+            turns = 0;
         }
         
         var person = new Person(name, turns);
@@ -46,15 +46,18 @@ public class TakingTurnsQueue
         Person person = _people.Dequeue();
 
         // Handle people with non-positive turns.
-        if (person.Turns > 1)
+        if (person.Turns <= 0)
         {
-            person.Turns -= 1;
             _people.Enqueue(person);  // Re-add to the back of the queue.
         }
-        else if (person.Turns <= 0)
+        else
         {
+            person.Turns -= 1;
+            if (person.Turns > 0)
+            {
+                _people.Enqueue(person);  // Re-add to the back of the queue.
+            }
             // If turns are zero or less, person stays in the queue indefinitely.
-            _people.Enqueue(person);  // Re-add to the back of the queue.
         }
 
         return person;
