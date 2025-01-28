@@ -123,7 +123,7 @@ public class TakingTurnsQueueTests
     // The test expects Tim to be the first person retrieved, but Sue is returned first when there are negative turns.
     public void TestTakingTurnsQueue_ForeverNegative()
     {
-        var timTurns = 0;
+        var timTurns = -3;
         var tim = new Person("Tim", timTurns);
         var sue = new Person("Sue", 3);
 

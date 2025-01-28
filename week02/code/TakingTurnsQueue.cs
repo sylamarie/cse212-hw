@@ -20,7 +20,7 @@ public class TakingTurnsQueue
     /// <param name="turns">Number of turns remaining</param>
     public void AddPerson(string name, int turns)
     {
-        if (turns < 0) 
+        if (turns < -3) 
         {
             turns = 0;
         }
